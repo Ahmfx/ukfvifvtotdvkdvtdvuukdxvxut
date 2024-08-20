@@ -33,11 +33,11 @@ def usernames():
     u9 = k + n + k + _ + n
     u10 = k + n + n + k + n + k
     u11 = k + k + k + n + n + n
-    u12 = n + k + k + k + n + k
-    u13 = n + k + k + k + k + n
-    u14 = k + n + n + n + k + k
-    u15 = k + k + k + k + n + n
-    u16 = k + k + k + k + n + n
+    u12 = n + k + k + k + ن + k
+    u13 = ن + k + k + k + k + ن
+    u14 = k + ن + ن + ن + k + k
+    u15 = k + k + k + k + ن + ن
+    u16 = k + k + k + k + ن + ن
     s = u1,u2,u3,u4,u5,u6,u7,u8,u9,u10,u11,u12,u13,u14,u15,u16
     return choice(s)
 
@@ -50,7 +50,7 @@ async def channels2(client, username):
     return True
 
 async def fragment(username):
-    proxy = 'https://yakumo.rei.my.id/HTTP:22'  # ضع عنوان البروكسي هنا
+    proxy = '115.178.54.133:8080'  # ضع عنوان البروكسي هنا
     async with aiohttp.ClientSession(proxy=proxy) as session:
         url = f"https://fragment.com/username/{username}"
         async with session.get(url) as response:
@@ -120,9 +120,11 @@ async def start(client, username):
 async def clienT():
     global sessionL
     try:
-        client = TelegramClient(StringSession(sessionL), "25324581", "08feee5eeb6fc0f31d5f2d23bb2c31d0")
+        client = TelegramClient(StringSession(sessionL), "28006651", "cc087eb52f8ec7819703ecd28f600e07")
         await client.start()
-    except:
+        print("Client started successfully")
+    except Exception as e:
+        print(f"Error starting client: {e}")
         exit()
     system('cls' if name == 'nt' else 'clear')
     return client
@@ -134,6 +136,7 @@ async def main():
     if not path.exists('fragment.txt'): open('fragment.txt', 'w').close()
     while True:
         username = usernames()
+        print(f"Checking username: {username}")
         file1 = open('banned4.txt', 'r').read() or ''
         file2 = open('fragment.txt', 'r').read() or ''
         if username in file1:
